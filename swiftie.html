@@ -1,4 +1,4 @@
-<!DOCTYPE html> <!--Cuando termines, borra todos los comentarios, o sea, estos de etiqueta verde-->
+<!DOCTYPE html> 
 <html lang="es">
     <head>
         <meta charset="utf-8" />
@@ -7,7 +7,7 @@
         <link href="style.css" rel="stylesheet" />
         <title>&#128047; Examen1 DNO Karla bonilla</title>
     </head>
-    <body>
+    <body style="background:#8F0A71">
         <header>
             <h1>
                 <a href="index.html">Karla Bonilla</a>
@@ -17,20 +17,26 @@
                
             </h1>
         </header>
-        <main>
-            <!--este es el mas dificil, aqui lo que hay que hacer es un codigo donde, cuando entren a la pagina, se cargue una frase aleatoria de una cancion de Taylor Switch, o algo asi se escriba
-            asjdjsalkdjsldjkalda
-            hay un ejemnplo donde el profe lo hace, podrias copiarle el codigo :)-->
+        <main id ="texto">
         </main>
-        <footer><!--Hay que cambiar en cada pagina los links a los cuales hacen referencia-->
+        <footer>
             <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
         </footer>
-        <!--No tocar, es el script para cambiar colores del background-->
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             var h, s;
+            
+            var data;
+            
+            function preload() {
+                data = loadJSON("https://taylorswiftapi.onrender.com/get");
+            }
             function setup() {
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
+                createP(data.quote + "<span> —Taylor Swift</span>").parent("texto");
+              createP(data.song+"<span> (Canción), Disco: </span>"+data.album).parent("texto");  
+
             }
             function draw() {
                 colorMode(HSB, 360, 100, 100);
@@ -44,3 +50,4 @@
         </script>
     </body>
 </html>
+ 

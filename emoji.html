@@ -18,26 +18,22 @@
             </h1>
         </header>
         <main></main>
-        <div id="EMOJI"></div>
-
-     <footer>
-        <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
-    </footer>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <script>
-        var palabras = ["😀","😂","😅","😋","😍","😎","😑","😖"];
+        <footer>
+            <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
+        </footer>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            var palabras = ["😀", "😂", "😅", "😋", "😍", "😎", "😑", "😖"];
+            var palabra;
             function setup() {
+                palabra = random(palabras);
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
-                var palabra = random(palabras);
-                createA("page.html?data="+palabra, palabra).parent("EMOJI");
             }
             function draw() {
-                colorMode(HSB, 360, 100, 100);
-                h = map(mouseX, 0, windowWidth, 0, 360);
-                s = map(mouseY, 0, windowHeight, 100, 0);
-                background(h, s, 55);
+                background('#081F86');
+                textSize(42);
+                textAlign(CENTER,CENTER);
+                text(palabra, mouseX, mouseY);
             }
             function windowResized() {
                 resizeCanvas(windowWidth, windowHeight);
