@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--Al iniciar un archivo html, se especifica el lenguaje, ya que el navegador podria no interpterar simbolos, como las tildes o la Ñ si no se utiliza-->
+<html lang="es">
+    <!--El codigo HTML se divide en 2 partes, cabeza y cuerpo
+    En la cabeza se ponen los script (codigo que dan vida a las animaciones y otras cosas), las referencias de estilos y los metadatos-->
+    <head>
+        <!--Estos son metadatos, se usan para que el buscador de googl los encuentre mas facilmente
+        un datro curioso es que las IA, como chatGPT, hacen uso de estos metadatos para la generación de contenido virtual
+    Son importantes los metadatos, ya que permiten ordenar los contenidos digitales, facilitando su busqueda en buscadores web, valga la redundacia-->
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Diseño y nuevos medios" />
+         <!--Aqui estamos haciendo la referencia al archivo de estilos CSS-->
+        <link href="style.css" rel="stylesheet" />
+        <!--Aqui se uso el codigo ASCII para poner el icono del gorrito, cambie el titulo a uno mas adecuado para la pagina principal-->
+        <title>&#127891; Prueba de Marco Fribla</title>
+    </head>
+    <!--El cuerpo es la parte principal de la pagina, y es lo que el usuario ve
+    HTML es un lenguaje interpretado, es decir, describe las caracteristicas de la pagina, y luego es el navegador quien se encarga de interpretar el codigo
+Usualmente se dice que es un lenguaje de etiquetas, es decir, se debe encerrar en ellas aquello que se quiere mostrar en la página web-->
+    <body>
+        <!--En general, el body se puede dividir en 3 partes, la cabecera, el principal y el pie de pagina-->
+        <header>
+            <!--En la cabecera se colocan los titulos, los subtitulos, y los menus-->
+            <h1>
+                <!--H1 es una etiqueta de Titulo, es la que se usa, principalmente, en el Header de la pagina-->
+                <a href="index.html">Marco Fribla</a> <!--La etiqueta "a" se utiliza para hacer referencias a otros archivos html, los cuales deben estar contenidos en la misma carpeta que la pagina de referencia-->
+                <a href="emoji.html">EMOJI</a>
+                <a href="swiftie.html">SWIFTIE</a>
+                <a href="cursos.html">CURSOS</a>
+            </h1><!--Cierre del titulo/menu-->
+        </header><!--Cierre de la cabecera-->
+        <main>
+            <!--Aqui puse mi nombre y mi motivacion del curso, use la etiqueta <br> para hacer salto de lineas, asi puedo ahorrarme tener que hacer varios párrafos de etiqueta <p>-->
+            <p>Me llamo Marco Fribla<br>Estoy haciendo esta página para practicar un poco de html<br>Tambien quiero descubrir como funciona un Json</p>
+        </main><!--Cierre del principal-->
+        <footer>
+            <!--La etiqueta pie de pagina es donde, usualmente, se coloca la información de contacto, los FAQ y toda esa clase de cosas de las paginas web-->
+            <p><!--Aqui se esta usando un parrafo, de etiqueta <p>, para colocar dos enlaces-->
+                <a href="https://diseno.uc.cl/idt/lineas-tematicas/diseno-audiovisual-y-nuevos-medios/">Diseño y nuevos medios</a> <!--Este enlace lo cambie, y ahora envia a la pagina del curso
+                    "Diseños y nuevos medios" de la pagina de la catolica-->
+                <a href="https://www.horaoficial.cl/">23 de agosto, 2023</a> <!--Este enlace tiene que mostrar la fecha actual, fijate que el profe lo puso como referencia a su
+                Github, pero eso lo podemos cambiar a otro enlace, por ejemplo, al de la hora oficial-->
+            </p><!--Cierre del parrafo, es importante aclarar que es el estilo el que hace que esten separados, de no existir, estarian ambos enlaces pegados-->
+        </footer><!--Cierre del pie de pagina-->
+        <!--a partir de aqui, esta el script que genera el cambio de color en la pagina al mover el mouse, el primero llama al recurso p5.min.js desde la nube, es casi como un import-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <!--este es el script que hace uso del script de arriba-->
+        <script>
+            //defino dos variables, que me indicaran la posicion del cursor
+            var posicionY, posicionX;
+            //esta funcion setup le indica al computador como relacionar la posicion con los colores, se ejecuta solo una vez
+            function setup() {
+                createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
+            }
+            //Esta funcion es ciclicla, e decir, se repite infitamente en el tiempo, y se usa para que se ejecute el cambio de color cuando se mueve el mouse
+            //relación que establecimos en la funcion setup
+            function draw() {
+                //indicamos la pleta de colores
+                colorMode(HSB, 360, 100, 100);
+                //capturamos la posicion del mouse y la guardamos en las variables x e y
+                posicionY = map(mouseX, 0, windowWidth, 0, 360);
+                posicionX = map(mouseY, 0, windowHeight, 100, 0);
+                //le indicamos al fondo como cambiar su color usando la posicion y, la posicion x y el numero 55, si te fijas corresponde a una paleta de colores (ej: 55,55,55)
+                background(posicionY, posicionX,55);
+            }
+            function windowResized() {
+                //Esta funcion es para que, cuando cambie el tamaño de la ventana, no se rompa todo
+                resizeCanvas(windowWidth, windowHeight);
+            }
+        </script><!--Fin del script para cambiar de color el background-->
+    </body><!--Fin del cuerpo de la pagina-->
+</html><!--Fin del archivo principal-->
