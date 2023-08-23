@@ -23,36 +23,20 @@
         <footer>
             <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
         </footer>
-    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-               var data = {
-                name: "Inteligencia Artificial",
-                code: "IIC2613",
-                about: "Este curso enseña los conceptos fundamentales de inteligencia artificial y las metodologías utilizadas en este ámbito. En particular, el curso abarca las técnicas clásicas de resolución de problemas mediante la lógica deductiva, algoritmos de búsqueda, y técnicas de planificación. El curso también cubre los aspectos fundamentales de aprendizaje automático."
+            //cursos que me llaman la atención
+             var data, dataArreglada
+            function preload (){
+                data = loadJSON("https://raw.githubusercontent.com/Karlabo/DNM-examen1/main/cursos_de_interes-1.json");
             }
             function setup() {
                 noCanvas();
-                console.log(data);
-                var x = 0;
-                while (x < 5){
-                    createElement("dl", "<dt>" + data.name + " (" + data.code + ")</dt><dd>" + data.about + "</dd>").parent("aqui");
-                    x++;
-                }
-            }
-            
-            var h, s;
-            function setup() {
-                createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
-            }
-            function draw() {
-                colorMode(HSB, 360, 100, 100);
-                h = map(mouseX, 0, windowWidth, 0, 360);
-                s = map(mouseY, 0, windowHeight, 100, 0);
-                background(h, s, 55);
-            }
-            function windowResized() {
-                resizeCanvas(windowWidth, windowHeight);
+                dataArreglada = Object.values(data);
+                console.log(dataArreglada);
+                dataArreglada.forEach((x) => {
+                    createElement("dl", "<dt>" + x.name + " <br> (" + x.code + ")</dt><dd>" + x.about + "</dd>").parent("aqui");
+                });                
             }
         </script>
     </body>

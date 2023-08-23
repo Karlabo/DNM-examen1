@@ -27,14 +27,19 @@
         <script>
             var h, s;
             
-            var data;
+            var ahora=new Date();
+            var data,hora;
             
             function preload() {
                 data = loadJSON("https://taylorswiftapi.onrender.com/get");
+                hora=ahora.toLocaleString();
             }
             function setup() {
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
+                createP(hora + "<span> Fecha y Hora </span>").parent("texto");
+
                 createP(data.quote + "<span> —Taylor Swift</span>").parent("texto");
+                
               createP(data.song+"<span> (Canción), Disco: </span>"+data.album).parent("texto");  
 
             }
