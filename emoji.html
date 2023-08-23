@@ -10,24 +10,26 @@
     <body>
         <header>
             <h1>
-                <a href="index.html">Nombre Apellido</a> <!--En cada pagina hay que cambiar este titulo-->
+                <a href="index.html">Karla Bonilla</a> 
                 <a href="emoji.html" style="text-decoration: line-through;">EMOJI</a>
                 <a href="swiftie.html">SWIFTIE</a>
                 <a href="cursos.html">CURSOS</a>
             </h1>
         </header>
-        <main>
-            <!--Usando el codigo de la clase 1, haz lo de los emojis que se dibujan moviendo tu cursor-->
-        </main>
-        <footer><!--Hay que cambiar en cada pagina los links a los cuales hacen referencia-->
-            <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
-        </footer>
-        <!--No tocar, es el script para cambiar colores del background-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-        <script>
-            var h, s;
+        <main></main>
+        <div id="EMOJI"></div>
+
+        <p><a href="https://github.com/profesorfaco/dno037-2023-2">Diseño y nuevos medios</a> <a href="https://github.com/profesorfaco/dno037-2023-2/tree/main/clase-03">23 de agosto, 2023</a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js" integrity="sha512-bcfltY+lNLlNxz38yBBm/HLaUB1gTV6I0e+fahbF9pS6roIdzUytozWdnFV8ZnM6cSAG5EbmO0ag0a/fLZSG4Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        var palabras = ["😀","😂","😅","😋","😍","😎","😑","😖"];
             function setup() {
                 createCanvas(windowWidth, windowHeight).position(0, 0).style("z-index", "-1");
+                var palabra = random(palabras);
+                createA("page.html?data="+palabra, palabra).parent("EMOJI");
             }
             function draw() {
                 colorMode(HSB, 360, 100, 100);
